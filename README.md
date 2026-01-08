@@ -1,73 +1,146 @@
-# Welcome to your Lovable project
+# TechCart - E-Commerce Platform
 
-## Project info
+A modern, responsive e-commerce platform for tech products built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Features
 
-## How can I edit this code?
+- Modern, responsive UI with Tailwind CSS and shadcn/ui components
+- Product catalog with search and filtering
+- Shopping cart functionality
+- Wishlist management
+- User authentication (optional - requires Supabase)
+- Newsletter subscription
 
-There are several ways of editing your application.
+## 🛠️ Technologies
 
-**Use Lovable**
+- **React** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling
+- **shadcn/ui** - UI component library
+- **React Router** - Routing
+- **React Query** - Data fetching and state management
+- **Supabase** - Backend (optional)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 📦 Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
+- Node.js 18+ and npm (or bun)
 
-**Use your preferred IDE**
+### Setup
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+# Clone the repository
+git clone https://github.com/adarshalexbalmuchu/TechCart.git
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# Navigate to project directory
+cd TechCart
 
-Follow these steps:
+# Install dependencies
+npm install
+# or
+bun install
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+# or
+bun run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🏗️ Build
 
-**Use GitHub Codespaces**
+```bash
+# Build for production
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview production build
+npm run preview
+```
 
-## What technologies are used for this project?
+## 🌐 Deployment
 
-This project is built with:
+### GitHub Pages
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is configured for GitHub Pages deployment.
 
-## How can I deploy this project?
+1. **Enable GitHub Pages:**
+   - Go to your repository settings
+   - Navigate to "Pages" section
+   - Select "GitHub Actions" as the source
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+2. **Automatic Deployment:**
+   - Push to the `main` branch
+   - GitHub Actions will automatically build and deploy
 
-## Can I connect a custom domain to my Lovable project?
+### Manual Deployment
 
-Yes, you can!
+```bash
+npm run build
+# Deploy the contents of the 'dist' folder to your hosting provider
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## ⚙️ Configuration
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Environment Variables (Optional)
+
+If you want to use Supabase authentication features, create a `.env` file:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_key
+```
+
+**Note:** The app works without Supabase - authentication features will simply be disabled.
+
+## 📁 Project Structure
+
+```
+TechCart/
+├── src/
+│   ├── components/      # React components
+│   ├── contexts/        # React contexts (Auth)
+│   ├── hooks/          # Custom hooks
+│   ├── lib/            # Utility functions
+│   ├── pages/          # Page components
+│   └── integrations/   # Third-party integrations
+├── public/             # Static assets
+└── supabase/          # Supabase migrations (optional)
+```
+
+## 🎨 Customization
+
+### Styling
+- Modify `tailwind.config.ts` for theme customization
+- Edit component styles in `src/components/`
+
+### Content
+- Update product data in components
+- Modify branding in `Header.tsx` and `Footer.tsx`
+
+## 📝 Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 👤 Author
+
+**Adarsh Alex Balmuchu**
+- GitHub: [@adarshalexbalmuchu](https://github.com/adarshalexbalmuchu)
+
+## 🙏 Acknowledgments
+
+- Built with [Vite](https://vitejs.dev/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide](https://lucide.dev/)
