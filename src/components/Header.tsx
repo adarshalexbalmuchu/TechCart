@@ -6,6 +6,7 @@ import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
 import CartSidebar from "./CartSidebar";
 import SearchModal from "./SearchModal";
+import unitechLogo from "/unitech-india-logo.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -103,7 +104,7 @@ const Header = () => {
           <div className="container mx-auto flex items-center justify-between gap-4">
             {/* Logo */}
             <Link to="/" className="flex items-center shrink-0">
-              <img src="/unitech-india-logo.png" alt="Unitech" className="h-10 sm:h-12 w-auto" />
+              <img src={unitechLogo} alt="Unitech" className="h-10 sm:h-12 w-auto" />
             </Link>
 
             {/* Search Bar */}

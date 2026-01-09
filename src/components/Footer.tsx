@@ -1,4 +1,5 @@
 import { Phone, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import unitechLogo from "/unitech-india-logo.png";
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
           {/* Logo & Contact */}
           <div className="col-span-2">
             <div className="mb-4">
-              <img src="/unitech-india-logo.png" alt="Unitech" className="h-10 sm:h-12 w-auto mb-4" />
+              <img src={unitechLogo} alt="Unitech" className="h-10 sm:h-12 w-auto mb-4" />
             </div>
             
             <div className="flex items-center gap-2 mb-3 text-foreground">
