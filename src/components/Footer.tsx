@@ -1,98 +1,97 @@
-import { Phone, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border/50">
-      <div className="container mx-auto px-4 py-10 sm:py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 sm:gap-10">
-          {/* Logo & Contact */}
-          <div className="col-span-2">
-            <div className="mb-5">
-              <img src={`${import.meta.env.BASE_URL}new-logo.png`} alt="Unitech" className="h-10 w-auto mb-4 opacity-90" />
+    <footer className="bg-black border-t border-border/70">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+          {/* Company Info */}
+          <div className="lg:col-span-1">
+            <div className="mb-6">
+              <img src={`${import.meta.env.BASE_URL}new-logo.png`} alt="Unitech" className="h-11 w-auto" />
             </div>
-            
-            <div className="flex items-center gap-2 mb-4 text-foreground">
-              <Phone className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
-              <div>
-                <p className="text-xs text-muted-foreground">Got questions?</p>
-                <p className="font-medium text-sm">unitechindia@gmail.com</p>
-              </div>
-            </div>
-
+            <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+              Manufacturing premium audio equipment and electronics since 1999. Trusted by professionals across India.
+            </p>
             <div className="flex gap-3">
-              <a href="#" className="w-8 h-8 border border-border/50 rounded-md flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors">
-                <Facebook className="w-3.5 h-3.5" strokeWidth={1.5} />
+              <a href="#" className="w-9 h-9 bg-card/60 hover:bg-primary border border-border/40 hover:border-primary rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary-foreground transition-all">
+                <Facebook className="w-4 h-4" strokeWidth={1.5} />
               </a>
-              <a href="#" className="w-8 h-8 border border-border/50 rounded-md flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors">
-                <Instagram className="w-3.5 h-3.5" strokeWidth={1.5} />
+              <a href="#" className="w-9 h-9 bg-card/60 hover:bg-primary border border-border/40 hover:border-primary rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary-foreground transition-all">
+                <Instagram className="w-4 h-4" strokeWidth={1.5} />
               </a>
-              <a href="#" className="w-8 h-8 border border-border/50 rounded-md flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors">
-                <Twitter className="w-3.5 h-3.5" strokeWidth={1.5} />
+              <a href="#" className="w-9 h-9 bg-card/60 hover:bg-primary border border-border/40 hover:border-primary rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary-foreground transition-all">
+                <Twitter className="w-4 h-4" strokeWidth={1.5} />
               </a>
-              <a href="#" className="w-8 h-8 border border-border/50 rounded-md flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors">
-                <Youtube className="w-3.5 h-3.5" strokeWidth={1.5} />
+              <a href="#" className="w-9 h-9 bg-card/60 hover:bg-primary border border-border/40 hover:border-primary rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary-foreground transition-all">
+                <Youtube className="w-4 h-4" strokeWidth={1.5} />
               </a>
             </div>
           </div>
 
-          {/* Find it Fast */}
+          {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4 text-sm">Find it Fast</h3>
-            <ul className="space-y-2 text-xs">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Tower Speakers</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Home Theatre</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">DTH Receivers</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Car Stereo</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Power Strips</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-foreground mb-4 text-sm opacity-0">&nbsp;</h3>
-            <ul className="space-y-2 text-xs">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Hot Selling</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Amplifiers</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Speakers</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Portable Audio</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Audio Parts</a></li>
+            <h3 className="font-semibold text-foreground mb-5 text-sm tracking-wide uppercase">Products</h3>
+            <ul className="space-y-3 text-sm">
+              <li><a href="/products/tower-speakers" className="text-muted-foreground hover:text-primary transition-colors">Tower Speakers</a></li>
+              <li><a href="/products/home-theatre-systems" className="text-muted-foreground hover:text-primary transition-colors">Home Theatre</a></li>
+              <li><a href="/products/dth-receivers" className="text-muted-foreground hover:text-primary transition-colors">DTH Receivers</a></li>
+              <li><a href="/products/car-stereo-systems" className="text-muted-foreground hover:text-primary transition-colors">Car Audio</a></li>
+              <li><a href="/products/audio-amplifiers" className="text-muted-foreground hover:text-primary transition-colors">Amplifiers</a></li>
             </ul>
           </div>
 
           {/* Support */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4 text-sm">Support</h3>
-            <ul className="space-y-2 text-xs">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Warranty Info</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Shipping Policy</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Returns</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Contact Us</a></li>
+            <h3 className="font-semibold text-foreground mb-5 text-sm tracking-wide uppercase">Support</h3>
+            <ul className="space-y-3 text-sm">
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Contact Us</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Warranty Information</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Shipping & Delivery</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Returns & Refunds</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">FAQ</a></li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Contact */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4 text-sm">Company</h3>
-            <ul className="space-y-2 text-xs">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">About UNITECH</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Become a Dealer</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Careers</a></li>
+            <h3 className="font-semibold text-foreground mb-5 text-sm tracking-wide uppercase">Contact</h3>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3">
+                <Mail className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                <a href="mailto:unitechindia@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  unitechindia@gmail.com
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                <span className="text-muted-foreground">
+                  Customer Support Available
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                <span className="text-muted-foreground">
+                  Pan-India Delivery
+                </span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-border/30 py-4">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-muted-foreground text-center sm:text-left">
-            © 2024 Unitech Electronics Pvt. Ltd. - All rights Reserved
-          </p>
-          <div className="flex items-center gap-3 opacity-40 grayscale">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/100px-Visa_Inc._logo.svg.png" alt="Visa" className="h-5 object-contain" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/100px-Mastercard-logo.svg.png" alt="Mastercard" className="h-5 object-contain" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Stripe_Logo%2C_revised_2016.svg/100px-Stripe_Logo%2C_revised_2016.svg.png" alt="Stripe" className="h-5 object-contain" />
+      <div className="border-t border-border/50 py-5 bg-card/30">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <p className="text-xs text-muted-foreground">
+              © 2024 UNITECH INDIA. All rights reserved.
+            </p>
+            <div className="flex items-center gap-5 text-xs">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Sitemap</a>
+            </div>
           </div>
         </div>
       </div>
