@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    /* Modern Dark Theme - Calm & Professional */
+    /* Modern Dark Theme with Blue Accent */
     --background: 216 28% 7%;        /* Deep charcoal #0B0F14 */
     --foreground: 0 0% 95%;          /* Near white */
 
@@ -16,11 +16,11 @@
     --popover: 215 25% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 41 96% 60%;           /* Warm amber accent */
-    --primary-foreground: 216 28% 7%;
+    --primary: 217 91% 60%;          /* Bright blue accent */
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 41 96% 60%;         /* Same amber for consistency */
-    --secondary-foreground: 216 28% 7%;
+    --secondary: 217 91% 60%;        /* Same blue for consistency */
+    --secondary-foreground: 0 0% 98%;
 
     --muted: 215 20% 16%;            /* Graphite */
     --muted-foreground: 0 0% 65%;    /* Muted grey text */
@@ -33,7 +33,7 @@
 
     --border: 215 20% 20%;           /* Subtle borders */
     --input: 215 20% 20%;
-    --ring: 41 96% 60%;              /* Amber focus ring */
+    --ring: 217 91% 60%;             /* Blue focus ring */
 
     --radius: 0.5rem;                /* Subtle rounded corners */
 
@@ -42,12 +42,12 @@
 
     --sidebar-background: 215 25% 12%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 41 96% 60%;
-    --sidebar-primary-foreground: 216 28% 7%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 215 20% 16%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 215 20% 20%;
-    --sidebar-ring: 41 96% 60%;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 

@@ -4,7 +4,6 @@ import CategoryNav from "@/components/CategoryNav";
 import ProductSection from "@/components/ProductSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import PromoBanner from "@/components/PromoBanner";
-import BrandsSection from "@/components/BrandsSection";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
@@ -18,7 +17,6 @@ const Index = () => {
         <ProductSection />
         <WhyChooseUs />
         <PromoBanner />
-        <BrandsSection />
       </main>
       <Newsletter />
       <Footer />
