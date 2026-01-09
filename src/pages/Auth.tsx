@@ -6,11 +6,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, Mail, Lock, User, ArrowLeft } from "lucide-react";
 import { z } from "zod";
+import { sanitizeInput, validatePasswordStrength } from "@/lib/security";
+import { SECURITY } from "@/lib/constants";
 
 const signUpSchema = z.object({
-  fullName: z.string().min(2, "Name must be at least 2 characters"),
+  fullName: z.string().min(2, "Name must be at least 2 characters").max(50, "Name too long"),
   email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  password: z.string()
+    .min(SECURITY.PASSWORD_MIN_LENGTH, `Password must be at least ${SECURITY.PASSWORD_MIN_LENGTH} characters`)
+    .refine((password) => {
+      const validation = validatePasswordStrength(password);
+      return validation.isValid;
+    }, "Password must contain uppercase, lowercase, number, and special character"),
 });
 
 const signInSchema = z.object({
@@ -45,15 +52,22 @@ const Auth = () => {
     setLoading(true);
 
     try {
+      // Sanitize inputs
+      const sanitizedData = {
+        fullName: sanitizeInput(formData.fullName),
+        email: formData.email.toLowerCase().trim(),
+        password: formData.password,
+      };
+
       if (isSignUp) {
-        const result = signUpSchema.safeParse(formData);
+        const result = signUpSchema.safeParse(sanitizedData);
         if (!result.success) {
           setError(result.error.errors[0].message);
           setLoading(false);
           return;
         }
 
-        const { error } = await signUp(formData.email, formData.password, formData.fullName);
+        const { error } = await signUp(sanitizedData.email, sanitizedData.password, sanitizedData.fullName);
         if (error) {
           if (error.message.includes("already registered")) {
             setError("This email is already registered. Please sign in.");
@@ -62,14 +76,14 @@ const Auth = () => {
           }
         }
       } else {
-        const result = signInSchema.safeParse(formData);
+        const result = signInSchema.safeParse(sanitizedData);
         if (!result.success) {
           setError(result.error.errors[0].message);
           setLoading(false);
           return;
         }
 
-        const { error } = await signIn(formData.email, formData.password);
+        const { error } = await signIn(sanitizedData.email, sanitizedData.password);
         if (error) {
           if (error.message.includes("Invalid login credentials")) {
             setError("Invalid email or password");
@@ -79,6 +93,7 @@ const Auth = () => {
         }
       }
     } catch (err) {
+      console.error("Auth error:", err);
       setError("An unexpected error occurred");
     }
 
