@@ -38,7 +38,7 @@ const HeroBanner = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % banners.length);
-    }, 5000);
+    }, 8000); // Slower auto-rotation: 8 seconds
     return () => clearInterval(timer);
   }, []);
 
@@ -51,7 +51,7 @@ const HeroBanner = () => {
         {banners.map((banner, index) => (
           <div
             key={banner.id}
-            className={`absolute inset-0 transition-all duration-700 ease-out ${
+            className={`absolute inset-0 transition-all duration-1500 ease-in-out ${
               index === currentSlide 
                 ? "opacity-100 translate-x-0" 
                 : index < currentSlide 
@@ -59,43 +59,13 @@ const HeroBanner = () => {
                   : "opacity-0 translate-x-full"
             }`}
           >
-            {/* Background Image */}
+            {/* Background Image - Clean with no overlay */}
             <div className="absolute inset-0">
               <img 
                 src={banner.image} 
-                alt={banner.title}
+                alt="UNITECH Banner"
                 className="w-full h-full object-cover"
               />
-              {/* Dark overlay for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-transparent" />
-            </div>
-            
-            <div className="container mx-auto px-4 h-full flex items-center relative z-10">
-              <div className="max-w-2xl space-y-5 animate-fade-in">
-                <div className="space-y-3">
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-                    {banner.title}
-                  </h2>
-                  <p className="text-base sm:text-lg lg:text-xl text-muted-foreground font-normal max-w-xl">
-                    {banner.subtitle}
-                  </p>
-                </div>
-
-                <div className="flex gap-4 items-center pt-2">
-                  <Link 
-                    to={banner.link} 
-                    className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors text-sm"
-                  >
-                    {banner.cta}
-                  </Link>
-                  <Link 
-                    to="/categories" 
-                    className="inline-flex items-center px-6 py-3 border-2 border-border text-foreground font-medium rounded-lg hover:border-primary hover:text-primary transition-colors text-sm"
-                  >
-                    View Categories
-                  </Link>
-                </div>
-              </div>
             </div>
           </div>
         ))}

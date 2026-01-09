@@ -6,7 +6,7 @@ import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
 import CartSidebar from "./CartSidebar";
 import SearchModal from "./SearchModal";
-import unitechLogo from "/unitech-india-logo.png";
+import unitechLogo from "/new-logo.png";
 import {
   DropdownMenu,
   DropdownMenuContent,

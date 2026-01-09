@@ -1,5 +1,5 @@
 import { Phone, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
-import unitechLogo from "/unitech-india-logo.png";
+import unitechLogo from "/new-logo.png";
 
 const Footer = () => {
   return (
