@@ -8,12 +8,10 @@ const Footer = () => {
           {/* Logo & Contact */}
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-3">
-              <div className="bg-primary rounded-lg p-1.5">
-                <span className="text-primary-foreground font-display font-bold text-base sm:text-lg">KE</span>
-              </div>
+              <img src="/unitech-india-logo.png" alt="Unitech" className="h-8 w-auto" />
               <div>
-                <h2 className="font-display font-bold text-base sm:text-lg text-foreground">KOHINOOR</h2>
-                <p className="text-[10px] sm:text-xs text-secondary">Electronics Store</p>
+                <h2 className="font-display font-bold text-base sm:text-lg text-foreground">UNITECH</h2>
+                <p className="text-[10px] sm:text-xs text-secondary">expand your life</p>
               </div>
             </div>
             
@@ -93,7 +91,7 @@ const Footer = () => {
       <div className="border-t border-border py-5">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground text-center sm:text-left">
-            © 2024 Kohinoor Electronics Pvt. Ltd. - All rights Reserved
+            © 2024 Unitech Electronics Pvt. Ltd. - All rights Reserved
           </p>
           <div className="flex items-center gap-4">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/100px-Visa_Inc._logo.svg.png" alt="Visa" className="h-6 object-contain opacity-70" />

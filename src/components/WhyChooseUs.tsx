@@ -46,10 +46,10 @@ const WhyChooseUs = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 sm:mb-12">
           <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-3">
-            Why Choose Kohinoor
+            Why Choose Unitech
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">
-            Your trusted destination for consumer electronics since 1967
+            Your trusted destination for quality electronics and home appliances
           </p>
         </div>
 
