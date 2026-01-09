@@ -1,4 +1,4 @@
-import { Search, ShoppingCart, Heart, Phone, MapPin, ChevronDown, Menu, User, LogOut } from "lucide-react";
+import { Search, ShoppingCart, Heart, Menu, User, LogOut } from "lucide-react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
@@ -32,33 +32,41 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border/50 backdrop-blur-sm bg-background/95">
-        {/* Top Bar */}
-        <div className="bg-primary/95 py-2 px-4">
-          <div className="container mx-auto flex items-center justify-between text-xs">
-            <div className="hidden md:flex items-center gap-8">
-              <Link to="/categories" className="flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
-                <MapPin className="w-3.5 h-3.5" strokeWidth={1.5} />
-                Browse Categories
-              </Link>
-              <Link to="/products" className="text-primary-foreground/90 hover:text-primary-foreground transition-colors">
-                All Products
-              </Link>
-            </div>
-            <div className="flex items-center gap-6 ml-auto">
-              <a 
-                href="mailto:unitechindia@gmail.com" 
-                className="flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors"
+      <header className="sticky top-0 z-40 border-b border-border/40 backdrop-blur-md bg-background/90">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between gap-6">
+            {/* Logo */}
+            <Link to="/" className="flex items-center shrink-0">
+              <img src={unitechLogo} alt="Unitech" className="h-9 w-auto" />
+            </Link>
+
+            {/* Search Bar - Desktop */}
+            <div className="flex-1 max-w-xl hidden md:block">
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="w-full bg-card/30 border border-border/40 rounded-full py-2 px-5 text-left text-muted-foreground hover:bg-card/50 hover:border-border/60 transition-all flex items-center justify-between group"
               >
-                <Phone className="w-3.5 h-3.5" strokeWidth={1.5} />
-                <span className="hidden sm:inline">Contact Us</span>
-              </a>
+                <span className="text-sm">Search products...</span>
+                <Search className="w-4 h-4 text-muted-foreground group-hover:text-foreground/80 transition-colors" strokeWidth={1.5} />
+              </button>
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-1 sm:gap-2">
+              {/* Search - Mobile */}
+              <button 
+                className="md:hidden p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all"
+                onClick={() => setIsSearchOpen(true)}
+                aria-label="Search"
+              >
+                <Search className="w-5 h-5" strokeWidth={1.5} />
+              </button>
               
+              {/* User */}
               {user ? (
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
-                    <User className="w-3.5 h-3.5" strokeWidth={1.5} />
-                    <span className="hidden sm:inline">{user.email?.split("@")[0]}</span>
+                  <DropdownMenuTrigger className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all">
+                    <User className="w-5 h-5" strokeWidth={1.5} />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="bg-card border-border">
                     <DropdownMenuItem onClick={() => navigate("/profile")} className="cursor-pointer">
@@ -80,80 +88,46 @@ const Header = () => {
               ) : (
                 <Link 
                   to="/auth" 
-                  className="text-primary-foreground/90 hover:text-primary-foreground transition-colors"
+                  className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all"
+                  aria-label="Sign in"
                 >
-                  Register / Sign in
+                  <User className="w-5 h-5" strokeWidth={1.5} />
                 </Link>
               )}
 
+              {/* Wishlist */}
               <Link 
                 to="/wishlist" 
-                className="flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors relative"
+                className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all relative"
+                aria-label="Wishlist"
               >
-                <Heart className="w-3.5 h-3.5" strokeWidth={1.5} />
-                <span className="hidden sm:inline">Wishlist</span>
+                <Heart className="w-5 h-5" strokeWidth={1.5} />
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-background text-foreground text-[10px] font-semibold w-4 h-4 rounded-full flex items-center justify-center border border-primary">
+                  <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-semibold min-w-[16px] h-4 px-1 rounded-full flex items-center justify-center">
                     {wishlistCount}
                   </span>
                 )}
               </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Main Header */}
-        <div className="bg-background/95 py-3 px-4">
-          <div className="container mx-auto flex items-center justify-between gap-4">
-            {/* Logo */}
-            <Link to="/" className="flex items-center shrink-0">
-              <img src={unitechLogo} alt="Unitech" className="h-10 sm:h-11 w-auto" />
-            </Link>
-
-            {/* Search Bar */}
-            <div className="flex-1 max-w-2xl hidden md:block">
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="w-full bg-card/50 border border-border/50 rounded-lg py-2.5 px-4 text-left text-muted-foreground hover:border-border transition-all flex items-center justify-between"
-              >
-                <span className="text-sm">Search for products, brands & more</span>
-                <Search className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
-              </button>
-            </div>
-
-            {/* Actions */}
-            <div className="flex items-center gap-3 sm:gap-5">
-              <button 
-                className="md:hidden p-2 text-foreground/70 hover:text-foreground transition-colors"
-                onClick={() => setIsSearchOpen(true)}
-              >
-                <Search className="w-5 h-5" strokeWidth={1.5} />
-              </button>
               
-              <a 
-                href="mailto:unitechindia@gmail.com" 
-                className="hidden sm:flex flex-col items-center gap-0.5 text-foreground/70 hover:text-foreground transition-colors"
-              >
-                <Phone className="w-4 h-4" strokeWidth={1.5} />
-                <span className="text-[10px]">Support</span>
-              </a>
-              
+              {/* Cart */}
               <button 
                 onClick={() => setIsCartOpen(true)}
-                className="flex flex-col items-center gap-0.5 text-foreground/70 hover:text-foreground transition-colors relative"
+                className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all relative"
+                aria-label="Cart"
               >
-                <ShoppingCart className="w-4 h-4" strokeWidth={1.5} />
-                <span className="text-[10px] hidden sm:block">Cart</span>
+                <ShoppingCart className="w-5 h-5" strokeWidth={1.5} />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-semibold w-4 h-4 rounded-full flex items-center justify-center">
+                  <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-semibold min-w-[16px] h-4 px-1 rounded-full flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
               </button>
 
+              {/* Mobile Menu */}
               <button 
-                className="md:hidden p-2 text-foreground/70 hover:text-foreground transition-colors"
+                className="md:hidden p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Menu"
               >
                 <Menu className="w-5 h-5" strokeWidth={1.5} />
               </button>
@@ -161,47 +135,23 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="bg-background/95 border-t border-border/30">
-          <div className="container mx-auto px-4">
-            <div className="hidden md:flex items-center gap-10 py-2.5">
-              <Link to="/categories" className="flex items-center gap-1.5 text-primary font-medium text-sm hover:text-primary/80 transition-colors">
-                All Categories
-                <ChevronDown className="w-3.5 h-3.5" strokeWidth={1.5} />
-              </Link>
-              <Link to="/products/hot-selling-products" className="text-primary/90 font-medium text-sm hover:text-primary transition-colors">
-                Hot Deals
-              </Link>
-              <Link to="/products" className="text-foreground/70 font-medium text-sm hover:text-foreground transition-colors">
-                All Products
-              </Link>
-              <Link to="/products?featured=true" className="text-foreground/70 font-medium text-sm hover:text-foreground transition-colors">
-                Featured
-              </Link>
-              <Link to="/products?trending=true" className="text-foreground/70 font-medium text-sm hover:text-foreground transition-colors">
-                Trending
-              </Link>
-            </div>
-          </div>
-        </nav>
-
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-card/95 border-t border-border/30 animate-fade-in backdrop-blur-sm">
+          <div className="md:hidden bg-background/95 border-t border-border/30 backdrop-blur-sm">
             <div className="container mx-auto px-4 py-3 space-y-1">
-              <Link to="/categories" className="block py-2.5 text-primary font-medium text-sm" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/categories" className="block py-2 px-3 text-foreground hover:bg-card/50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
                 All Categories
               </Link>
-              <Link to="/products/hot-selling-products" className="block py-2.5 text-primary/90 font-medium text-sm" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/products/hot-selling-products" className="block py-2 px-3 text-foreground hover:bg-card/50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Hot Deals
               </Link>
-              <Link to="/products" className="block py-2.5 text-foreground font-medium text-sm" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/products" className="block py-2 px-3 text-foreground hover:bg-card/50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
                 All Products
               </Link>
-              <Link to="/products?featured=true" className="block py-2.5 text-foreground font-medium text-sm" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/products?featured=true" className="block py-2 px-3 text-foreground hover:bg-card/50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Featured
               </Link>
-              <Link to="/products?trending=true" className="block py-2.5 text-foreground font-medium text-sm" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/products?trending=true" className="block py-2 px-3 text-foreground hover:bg-card/50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Trending
               </Link>
             </div>
