@@ -1,26 +1,22 @@
 import { 
-  Smartphone, 
-  Tv, 
-  Laptop, 
-  Refrigerator, 
-  Wind, 
-  Headphones, 
-  Camera, 
-  Watch,
-  ChevronLeft,
-  ChevronRight
+  Speaker, 
+  Radio, 
+  Car, 
+  Zap, 
+  Settings, 
+  Flame
 } from "lucide-react";
 import { useRef } from "react";
 
 const categories = [
-  { name: "Smartphones", icon: Smartphone },
-  { name: "Televisions", icon: Tv },
-  { name: "Laptops", icon: Laptop },
-  { name: "Refrigerators", icon: Refrigerator },
-  { name: "Air Conditioners", icon: Wind },
-  { name: "Audio", icon: Headphones },
-  { name: "Cameras", icon: Camera },
-  { name: "Smartwatches", icon: Watch },
+  { name: "Tower Speakers", icon: Speaker, slug: "tower-speakers" },
+  { name: "Home Theatre", icon: Speaker, slug: "home-theatre-systems" },
+  { name: "DTH Receivers", icon: Radio, slug: "dth-receivers" },
+  { name: "Car Audio", icon: Car, slug: "car-stereo-systems" },
+  { name: "Power Strips", icon: Zap, slug: "power-strips" },
+  { name: "Audio Parts", icon: Settings, slug: "speakers" },
+  { name: "Amplifiers", icon: Speaker, slug: "audio-amplifiers" },
+  { name: "Hot Selling", icon: Flame, slug: "hot-selling-products" },
 ];
 
 const CategoryNav = () => {

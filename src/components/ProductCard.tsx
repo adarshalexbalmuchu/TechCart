@@ -8,8 +8,8 @@ interface ProductCardProps {
   image: string;
   rating: number;
   reviews: number;
-  price: number;
-  originalPrice: number;
+  price: number | null;
+  originalPrice: number | null;
   discount: number;
 }
 
@@ -101,28 +101,53 @@ const ProductCard = ({
 
         {/* Price */}
         <div className="space-y-1">
-          <p className="text-xs text-secondary font-medium">Special Price</p>
-          <div className="flex items-baseline gap-2">
-            <span className="text-base sm:text-lg font-bold text-foreground">
-              ₹{price.toLocaleString()}
-            </span>
-            {originalPrice > price && (
-              <span className="text-sm text-muted-foreground line-through">
-                ₹{originalPrice.toLocaleString()}
-              </span>
-            )}
-          </div>
+          {price === null ? (
+            <>
+              <p className="text-xs text-secondary font-medium">Pricing</p>
+              <div className="flex items-baseline gap-2">
+                <span className="text-base sm:text-lg font-bold text-primary">
+                  Price on Request
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Contact: unitechindia@gmail.com
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="text-xs text-secondary font-medium">Special Price</p>
+              <div className="flex items-baseline gap-2">
+                <span className="text-base sm:text-lg font-bold text-foreground">
+                  ₹{price.toLocaleString()}
+                </span>
+                {originalPrice && originalPrice > price && (
+                  <span className="text-sm text-muted-foreground line-through">
+                    ₹{originalPrice.toLocaleString()}
+                  </span>
+                )}
+              </div>
+            </>
+          )}
         </div>
 
         {/* Actions */}
         <div className="flex items-center gap-2 pt-2">
-          <button 
-            onClick={handleAddToCart}
-            className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
-          >
-            <ShoppingCart className="w-4 h-4" />
-            Add to Cart
-          </button>
+          {price === null ? (
+            <a 
+              href="mailto:unitechindia@gmail.com?subject=Price Inquiry"
+              className="flex-1 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+            >
+              Request Quote
+            </a>
+          ) : (
+            <button 
+              onClick={handleAddToCart}
+              className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+            >
+              <ShoppingCart className="w-4 h-4" />
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>

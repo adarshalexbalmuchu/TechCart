@@ -15,8 +15,8 @@ const Footer = () => {
             <div className="flex items-center gap-2 mb-3 text-foreground">
               <Phone className="w-4 h-4 text-secondary" />
               <div>
-                <p className="text-[10px] sm:text-xs text-muted-foreground">Got questions? Call us!</p>
-                <p className="font-semibold text-sm">022 6163 6464</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">Got questions? Contact us!</p>
+                <p className="font-semibold text-sm">unitechindia@gmail.com</p>
               </div>
             </div>
 
@@ -40,44 +40,44 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-secondary mb-3 text-sm sm:text-base">Find it Fast</h3>
             <ul className="space-y-2 text-xs sm:text-sm">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Accessories</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Air Conditioner</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Laptops & Printer</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Home Appliances</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Home Entertainment</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Tower Speakers</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Home Theatre</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">DTH Receivers</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Car Stereo</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Power Strips</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold text-secondary mb-4">&nbsp;</h3>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Smart Phone</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Microwaves</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Air Coolers</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Televisions</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Washing Machines</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Hot Selling</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Amplifiers</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Speakers</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Portable Audio</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Audio Parts</a></li>
             </ul>
           </div>
 
-          {/* My Account */}
+          {/* Support */}
           <div>
-            <h3 className="font-semibold text-secondary mb-4">My Account</h3>
+            <h3 className="font-semibold text-secondary mb-4">Support</h3>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">My Account</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Track Your Order</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Wish List</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Compare Products</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Warranty Info</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Shipping Policy</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Returns</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Contact Us</a></li>
             </ul>
           </div>
 
-          {/* About & Policies */}
+          {/* Company */}
           <div>
-            <h3 className="font-semibold text-secondary mb-4">About</h3>
+            <h3 className="font-semibold text-secondary mb-4">Company</h3>
             <ul className="space-y-2.5 text-sm">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">About Us</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Blogs</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Our Promise</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">About UNITECH</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Become a Dealer</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Careers</a></li>
             </ul>
           </div>

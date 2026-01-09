@@ -1,42 +1,42 @@
 import { 
-  BadgePercent, 
-  CreditCard, 
+  Award,
+  Shield, 
   Truck, 
-  RefreshCcw, 
   Headphones, 
-  Shield 
+  Building, 
+  Wrench 
 } from "lucide-react";
 
 const features = [
   {
-    icon: BadgePercent,
-    title: "Best Prices",
-    description: "Guaranteed lowest prices on all electronics",
-  },
-  {
-    icon: CreditCard,
-    title: "Easy EMI",
-    description: "No-cost EMI & flexible payment options",
-  },
-  {
-    icon: Truck,
-    title: "Fast Delivery",
-    description: "Free scheduled delivery & installation",
-  },
-  {
-    icon: RefreshCcw,
-    title: "Easy Returns",
-    description: "Hassle-free 15-day return policy",
-  },
-  {
-    icon: Headphones,
-    title: "24/7 Support",
-    description: "Expert assistance anytime you need",
+    icon: Award,
+    title: "Trusted Since 1999",
+    description: "Over 25 years of quality audio manufacturing excellence",
   },
   {
     icon: Shield,
-    title: "Extended Warranty",
-    description: "Additional protection plans available",
+    title: "Quality Controlled",
+    description: "Every product undergoes rigorous testing and quality checks",
+  },
+  {
+    icon: Truck,
+    title: "Pan-India Availability",
+    description: "Competitive pricing for dealers and customers nationwide",
+  },
+  {
+    icon: Building,
+    title: "R&D Capability",
+    description: "Custom product development and design solutions",
+  },
+  {
+    icon: Headphones,
+    title: "Expert Support",
+    description: "Dedicated help for product selection and setup guidance",
+  },
+  {
+    icon: Wrench,
+    title: "Manufacturing Excellence",
+    description: "State-of-the-art production facilities",
   },
 ];
 
