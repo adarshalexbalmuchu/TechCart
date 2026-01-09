@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 
 const ProductSection = () => {
   const [activeTab, setActiveTab] = useState<"new" | "trending">("new");
+  const navigate = useNavigate();
 
   const { products: newProducts, loading: loadingNew } = useProducts({ featured: true, limit: 4 });
   const { products: trendingProducts, loading: loadingTrending } = useProducts({ trending: true, limit: 4 });
@@ -57,8 +59,8 @@ const ProductSection = () => {
                   image={product.image_url}
                   rating={Number(product.rating)}
                   reviews={product.reviews_count}
-                  price={Number(product.price)}
-                  originalPrice={Number(product.original_price)}
+                  price={product.price ? Number(product.price) : null}
+                  originalPrice={product.original_price ? Number(product.original_price) : null}
                   discount={product.discount_percent}
                 />
               </div>
@@ -68,7 +70,10 @@ const ProductSection = () => {
 
         {/* View All Button */}
         <div className="text-center mt-8 sm:mt-12">
-          <button className="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-3 rounded-full transition-all duration-300">
+          <button 
+            onClick={() => navigate("/products")}
+            className="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-3 rounded-full transition-all duration-300"
+          >
             View All Products
           </button>
         </div>

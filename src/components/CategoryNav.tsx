@@ -9,6 +9,7 @@ import {
   ChevronRight
 } from "lucide-react";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   { name: "Tower Speakers", icon: Speaker, slug: "tower-speakers" },
@@ -23,6 +24,7 @@ const categories = [
 
 const CategoryNav = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -50,9 +52,9 @@ const CategoryNav = () => {
             className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide px-2 sm:px-10"
           >
             {categories.map((category, index) => (
-              <a
+              <button
                 key={category.name}
-                href="#"
+                onClick={() => navigate(`/products/${category.slug}`)}
                 className="flex flex-col items-center gap-2 sm:gap-3 min-w-[80px] sm:min-w-[100px] p-3 sm:p-4 rounded-xl hover:bg-muted transition-all duration-300 group"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
@@ -62,7 +64,7 @@ const CategoryNav = () => {
                 <span className="text-xs sm:text-sm text-foreground font-medium text-center whitespace-nowrap">
                   {category.name}
                 </span>
-              </a>
+              </button>
             ))}
           </div>
 
