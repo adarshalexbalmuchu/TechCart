@@ -2,7 +2,7 @@ import { Phone, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-card/50 border-t border-border/30">
+    <footer className="bg-card border-t border-border/50">
       <div className="container mx-auto px-4 py-10 sm:py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 sm:gap-10">
           {/* Logo & Contact */}

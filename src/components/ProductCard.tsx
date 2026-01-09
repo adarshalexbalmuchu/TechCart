@@ -39,13 +39,13 @@ const ProductCard = ({
   };
 
   return (
-    <div className="bg-card rounded-lg overflow-hidden border border-border/40 hover:border-border transition-all duration-300 group">
+    <div className="bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group">
       {/* Image Container */}
-      <div className="relative bg-muted/20 p-4 aspect-square">
+      <div className="relative bg-background p-4 aspect-square">
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500"
+          className="w-full h-full object-contain group-hover:scale-[1.05] transition-transform duration-500"
         />
         
         {/* Discount Badge - minimal */}
