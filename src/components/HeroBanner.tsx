@@ -129,14 +129,5 @@ const HeroBanner = () => {
     </section>
   );
 };
-                Quality Assured
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 export default HeroBanner;
