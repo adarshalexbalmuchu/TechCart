@@ -223,29 +223,49 @@ const Admin = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Product Management</h1>
-          <p className="text-muted-foreground">Manage your product catalog</p>
+      
+      {/* Info Banner */}
+      <div className="bg-primary/10 border-b border-primary/20">
+        <div className="container mx-auto px-4 py-3">
+          <p className="text-sm text-foreground/80">
+            💡 <strong>Tip:</strong> Access this admin panel anytime by clicking your profile icon → <span className="text-primary font-medium">Admin Panel</span>
+          </p>
+        </div>
+      </div>
+
+      <main className="container mx-auto px-4 py-8 pt-12">
+        {/* Admin Header with Shield Icon */}
+        <div className="mb-8 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-6">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="p-2 bg-primary/20 rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+              </svg>
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold text-foreground">Admin Panel - Product Management</h1>
+              <p className="text-muted-foreground">Manage your product catalog, add new products, and update inventory</p>
+            </div>
+          </div>
         </div>
 
         {/* Actions Bar */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
               type="text"
-              placeholder="Search products..."
+              placeholder="Search products by name, category, or brand..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-card border-border/60"
+              className="pl-11 bg-card border-border/60 h-11 text-base"
             />
           </div>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button onClick={resetForm} className="gap-2">
-                <Plus className="w-4 h-4" />
-                Add Product
+              <Button onClick={resetForm} className="gap-2 h-11 px-6 bg-primary hover:bg-primary/90">
+                <Plus className="w-5 h-5" />
+                Add New Product
               </Button>
             </DialogTrigger>
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-card border-border/60">
