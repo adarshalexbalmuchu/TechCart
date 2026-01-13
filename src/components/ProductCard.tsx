@@ -26,7 +26,6 @@ const ProductCard = ({
   originalPrice,
   discount,
 }: ProductCardProps) => {
-  console.log('🔍 ProductCard rendering:', { id, name });
   const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
   const { addToCompare, removeFromCompare, isInCompare, compareProducts } = useCompare();
@@ -50,7 +49,6 @@ const ProductCard = ({
   const handleToggleCompare = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('🔄 Compare button clicked:', { id, name, inCompare });
     
     // If already in compare, remove it
     if (inCompare) {
@@ -107,7 +105,7 @@ const ProductCard = ({
         )}
 
         {/* Quick Actions - Always visible with better contrast */}
-        <div className="absolute top-3 right-3 flex flex-col gap-2" style={{ backgroundColor: 'rgba(255,0,0,0.1)', border: '2px solid red' }}>
+        <div className="absolute top-3 right-3 flex flex-col gap-2">
           <button
             onClick={handleToggleWishlist}
             className={`p-2 rounded-md backdrop-blur-sm shadow-lg transition-all hover:scale-110 ${
