@@ -58,7 +58,7 @@ export const useCart = () => {
     fetchCart();
   }, [user]);
 
-  const addToCart = async (productId: string) => {
+  const addToCart = async (productId: string, quantity: number = 1) => {
     if (!user) {
       toast.error("Please sign in to add items to cart");
       return false;
@@ -69,7 +69,7 @@ export const useCart = () => {
     if (existingItem) {
       const { error } = await supabase
         .from("cart_items")
-        .update({ quantity: existingItem.quantity + 1 })
+        .update({ quantity: existingItem.quantity + quantity })
         .eq("id", existingItem.id);
 
       if (error) {
@@ -79,7 +79,7 @@ export const useCart = () => {
     } else {
       const { error } = await supabase
         .from("cart_items")
-        .insert({ user_id: user.id, product_id: productId, quantity: 1 });
+        .insert({ user_id: user.id, product_id: productId, quantity });
 
       if (error) {
         toast.error("Failed to add to cart");

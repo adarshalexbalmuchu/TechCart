@@ -77,6 +77,8 @@ const Admin = () => {
   const [productToDelete, setProductToDelete] = useState<string | null>(null);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [stats, setStats] = useState({ total: 0, active: 0, lowStock: 0 });
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [checkingAdmin, setCheckingAdmin] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -94,12 +96,33 @@ const Admin = () => {
   });
 
   useEffect(() => {
-    // Check if user is admin (you can add admin role check here)
-    if (!user) {
-      navigate("/auth");
-      return;
-    }
-    fetchProducts();
+    const checkAdminAndFetch = async () => {
+      // Check if user is admin
+      if (!user) {
+        navigate("/auth");
+        return;
+      }
+
+      setCheckingAdmin(true);
+      
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("is_admin")
+        .eq("id", user.id)
+        .single();
+
+      if (error || !data?.is_admin) {
+        toast.error("Access denied. Admin privileges required.");
+        navigate("/");
+        return;
+      }
+
+      setIsAdmin(true);
+      setCheckingAdmin(false);
+      fetchProducts();
+    };
+
+    checkAdminAndFetch();
   }, [user, navigate]);
 
   useEffect(() => {
@@ -290,12 +313,19 @@ const Admin = () => {
     setEditingProduct(null);
   };
 
-  if (loading) {
+  if (loading || checkingAdmin) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-foreground">Loading...</div>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-2 border-primary border-t-transparent mx-auto mb-4"></div>
+          <p className="text-foreground">{checkingAdmin ? "Verifying access..." : "Loading..."}</p>
+        </div>
       </div>
     );
+  }
+
+  if (!isAdmin) {
+    return null;
   }
 
   return (

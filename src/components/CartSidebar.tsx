@@ -126,7 +126,13 @@ const CartSidebar = ({ isOpen, onClose }: CartSidebarProps) => {
                 ₹{cartTotal.toLocaleString()}
               </span>
             </div>
-            <Button className="w-full gradient-gold text-secondary-foreground font-semibold py-6">
+            <Button 
+              onClick={() => {
+                onClose();
+                navigate("/checkout");
+              }}
+              className="w-full gradient-gold text-secondary-foreground font-semibold py-6"
+            >
               Proceed to Checkout
             </Button>
           </div>

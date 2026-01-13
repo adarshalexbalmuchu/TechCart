@@ -2,6 +2,8 @@ import { Star, Heart, ShoppingCart, GitCompare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
+import { useCompare } from "@/hooks/useCompare";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   id: string;
@@ -24,11 +26,14 @@ const ProductCard = ({
   originalPrice,
   discount,
 }: ProductCardProps) => {
+  console.log('🔍 ProductCard rendering:', { id, name });
   const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
+  const { addToCompare, removeFromCompare, isInCompare, compareProducts } = useCompare();
   const navigate = useNavigate();
   
   const liked = isInWishlist(id);
+  const inCompare = isInCompare(id);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -40,6 +45,41 @@ const ProductCard = ({
     e.preventDefault();
     e.stopPropagation();
     toggleWishlist(id);
+  };
+
+  const handleToggleCompare = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('🔄 Compare button clicked:', { id, name, inCompare });
+    
+    // If already in compare, remove it
+    if (inCompare) {
+      removeFromCompare(id);
+      toast.success("Removed from compare");
+      return;
+    }
+    
+    // Check if we can add more
+    if (compareProducts.length >= 4) {
+      toast.error("Maximum 4 products can be compared");
+      return;
+    }
+    
+    // Add to compare
+    addToCompare({
+      id,
+      name,
+      image_url: image,
+      price,
+      original_price: originalPrice,
+      rating,
+      category: "",
+      brand: null,
+      description: null,
+      discount_percent: discount,
+    });
+    
+    toast.success("Added to compare");
   };
 
   const handleClick = () => {
@@ -66,20 +106,27 @@ const ProductCard = ({
           </span>
         )}
 
-        {/* Quick Actions - subtle */}
-        <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        {/* Quick Actions - Always visible with better contrast */}
+        <div className="absolute top-3 right-3 flex flex-col gap-2" style={{ backgroundColor: 'rgba(255,0,0,0.1)', border: '2px solid red' }}>
           <button
             onClick={handleToggleWishlist}
-            className={`p-2 rounded-md backdrop-blur-sm transition-colors ${
+            className={`p-2 rounded-md backdrop-blur-sm shadow-lg transition-all hover:scale-110 ${
               liked 
-                ? "bg-destructive/90 text-destructive-foreground border border-destructive" 
-                : "bg-card/90 text-foreground border border-border hover:border-destructive hover:text-destructive"
+                ? "bg-destructive text-white border-2 border-destructive" 
+                : "bg-white/90 text-foreground border-2 border-white hover:border-destructive hover:text-destructive hover:bg-white"
             }`}
           >
-            <Heart className={`w-3.5 h-3.5 ${liked ? "fill-current" : ""}`} strokeWidth={1.5} />
+            <Heart className={`w-4 h-4 ${liked ? "fill-current" : ""}`} strokeWidth={2} />
           </button>
-          <button className="p-2 bg-card/90 backdrop-blur-sm rounded-md text-foreground border border-border hover:border-primary hover:text-primary transition-colors">
-            <GitCompare className="w-3.5 h-3.5" strokeWidth={1.5} />
+          <button
+            onClick={handleToggleCompare}
+            className={`p-2 rounded-md backdrop-blur-sm shadow-lg transition-all hover:scale-110 ${
+              inCompare
+                ? "bg-primary text-white border-2 border-primary"
+                : "bg-white/90 text-foreground border-2 border-white hover:border-primary hover:text-primary hover:bg-white"
+            }`}
+          >
+            <GitCompare className="w-4 h-4" strokeWidth={2} />
           </button>
         </div>
       </div>
@@ -113,51 +160,27 @@ const ProductCard = ({
 
         {/* Price */}
         <div className="space-y-1">
-          {price === null ? (
-            <>
-              <div className="flex items-baseline gap-2">
-                <span className="text-base font-semibold text-primary">
-                  Price on Request
-                </span>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                unitechindia@gmail.com
-              </p>
-            </>
-          ) : (
-            <>
-              <div className="flex items-baseline gap-2">
-                <span className="text-lg font-semibold text-foreground">
-                  ₹{price.toLocaleString()}
-                </span>
-                {originalPrice && originalPrice > price && (
-                  <span className="text-sm text-muted-foreground line-through">
-                    ₹{originalPrice.toLocaleString()}
-                  </span>
-                )}
-              </div>
-            </>
-          )}
+          <div className="flex items-baseline gap-2">
+            <span className="text-lg font-semibold text-foreground">
+              ₹{(price || 0).toLocaleString()}
+            </span>
+            {originalPrice && originalPrice > (price || 0) && (
+              <span className="text-sm text-muted-foreground line-through">
+                ₹{originalPrice.toLocaleString()}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Actions - outline style */}
         <div className="flex items-center gap-2 pt-2">
-          {price === null ? (
-            <a 
-              href="mailto:unitechindia@gmail.com?subject=Price Inquiry"
-              className="flex-1 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2 transition-all"
-            >
-              Request Quote
-            </a>
-          ) : (
-            <button 
-              onClick={handleAddToCart}
-              className="flex-1 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2 transition-all"
-            >
-              <ShoppingCart className="w-4 h-4" strokeWidth={1.5} />
-              Add to Cart
-            </button>
-          )}
+          <button 
+            onClick={handleAddToCart}
+            className="flex-1 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2 transition-all"
+          >
+            <ShoppingCart className="w-4 h-4" strokeWidth={1.5} />
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

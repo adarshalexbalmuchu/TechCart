@@ -4,7 +4,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Newsletter from "@/components/Newsletter";
 import { Heart, ShoppingCart, Trash2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -128,7 +127,6 @@ const Wishlist = () => {
           </div>
         )}
       </main>
-      <Newsletter />
       <Footer />
     </div>
   );

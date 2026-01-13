@@ -1,6 +1,52 @@
 import { Mail } from "lucide-react";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const Newsletter = () => {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast.error("Please enter your email address");
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const { error } = await supabase
+        .from("newsletter_subscribers")
+        .insert({ email: email.toLowerCase().trim() });
+
+      if (error) {
+        if (error.code === "23505") { // Unique constraint violation
+          toast.error("This email is already subscribed!");
+        } else {
+          toast.error("Failed to subscribe. Please try again.");
+        }
+      } else {
+        toast.success("Successfully subscribed to our newsletter!");
+        setEmail("");
+      }
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="bg-card/50 border-y border-border/30 py-8 sm:py-10">
       <div className="container mx-auto px-4">
@@ -19,17 +65,21 @@ const Newsletter = () => {
             </div>
           </div>
 
-          <form className="flex w-full md:w-auto gap-2">
+          <form onSubmit={handleSubmit} className="flex w-full md:w-auto gap-2">
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email address"
-              className="flex-1 md:w-72 bg-card border border-border rounded-lg py-2.5 px-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+              disabled={loading}
+              className="flex-1 md:w-72 bg-card border border-border rounded-lg py-2.5 px-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm disabled:opacity-50"
             />
             <button
               type="submit"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium px-5 py-2.5 rounded-lg transition-all whitespace-nowrap text-sm"
+              disabled={loading}
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium px-5 py-2.5 rounded-lg transition-all whitespace-nowrap text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Subscribe
+              {loading ? "..." : "Subscribe"}
             </button>
           </form>
         </div>

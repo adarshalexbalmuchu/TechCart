@@ -1,9 +1,10 @@
-import { Search, ShoppingCart, Heart, Menu, User, LogOut, ChevronDown, Speaker, Radio, Car, Zap, Settings, Flame, ShieldCheck } from "lucide-react";
+import { Search, ShoppingCart, Heart, Menu, User, LogOut, ChevronDown, Speaker, Radio, Car, Zap, Settings, Flame, ShieldCheck, GitCompare } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
+import { useCompare } from "@/hooks/useCompare";
 import { supabase } from "@/integrations/supabase/client";
 import CartSidebar from "./CartSidebar";
 import SearchModal from "./SearchModal";
@@ -25,6 +26,7 @@ const Header = () => {
   const { user, signOut } = useAuth();
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
+  const { compareProducts } = useCompare();
   const navigate = useNavigate();
 
   // Check if user is admin
@@ -149,6 +151,20 @@ const Header = () => {
                 {wishlistCount > 0 && (
                   <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-semibold min-w-[16px] h-4 px-1 rounded-full flex items-center justify-center">
                     {wishlistCount}
+                  </span>
+                )}
+              </Link>
+
+              {/* Compare */}
+              <Link 
+                to="/compare" 
+                className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all relative"
+                aria-label="Compare"
+              >
+                <GitCompare className="w-5 h-5" strokeWidth={1.5} />
+                {compareProducts.length > 0 && (
+                  <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-semibold min-w-[16px] h-4 px-1 rounded-full flex items-center justify-center">
+                    {compareProducts.length}
                   </span>
                 )}
               </Link>

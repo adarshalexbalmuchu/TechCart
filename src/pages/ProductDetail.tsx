@@ -118,7 +118,6 @@ const ProductDetail = () => {
   }
 
   const inWishlist = isInWishlist(product.id);
-  const hasPrice = product.price !== null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -180,35 +179,22 @@ const ProductDetail = () => {
 
             {/* Price */}
             <div className="border-t border-b border-border py-6">
-              {hasPrice ? (
-                <>
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <span className="text-4xl font-bold text-foreground">
-                      ₹{product.price.toLocaleString()}
+              <div className="flex items-baseline gap-3 mb-2">
+                <span className="text-4xl font-bold text-foreground">
+                  ₹{(product.price || 0).toLocaleString()}
+                </span>
+                {product.original_price && product.original_price > (product.price || 0) && (
+                  <>
+                    <span className="text-xl text-muted-foreground line-through">
+                      ₹{product.original_price.toLocaleString()}
                     </span>
-                    {product.original_price && product.original_price > product.price && (
-                      <>
-                        <span className="text-xl text-muted-foreground line-through">
-                          ₹{product.original_price.toLocaleString()}
-                        </span>
-                        <span className="text-lg text-success font-semibold">
-                          {product.discount_percent}% OFF
-                        </span>
-                      </>
-                    )}
-                  </div>
-                  <p className="text-sm text-muted-foreground">Inclusive of all taxes</p>
-                </>
-              ) : (
-                <div>
-                  <div className="text-3xl font-bold text-primary mb-2">
-                    Price on Request
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Contact us: <a href="mailto:unitechindia@gmail.com" className="text-primary hover:underline">unitechindia@gmail.com</a>
-                  </p>
-                </div>
-              )}
+                    <span className="text-lg text-success font-semibold">
+                      {product.discount_percent}% OFF
+                    </span>
+                  </>
+                )}
+              </div>
+              <p className="text-sm text-muted-foreground">Inclusive of all taxes</p>
             </div>
 
             {/* Stock Status */}
@@ -220,7 +206,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Quantity and Actions */}
-            {hasPrice && product.stock > 0 && (
+            {product.stock > 0 && (
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-3">
                   <span className="text-sm font-medium">Quantity:</span>
@@ -245,7 +231,7 @@ const ProductDetail = () => {
 
             {/* Action Buttons */}
             <div className="flex gap-4">
-              {hasPrice && product.stock > 0 ? (
+              {product.stock > 0 ? (
                 <button
                   onClick={handleAddToCart}
                   className="flex-1 bg-primary text-primary-foreground py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
@@ -254,13 +240,13 @@ const ProductDetail = () => {
                   Add to Cart
                 </button>
               ) : (
-                <a
-                  href="mailto:unitechindia@gmail.com?subject=Product Inquiry"
-                  className="flex-1 bg-primary text-primary-foreground py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
+                <button
+                  disabled
+                  className="flex-1 bg-muted text-muted-foreground py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 cursor-not-allowed"
                 >
-                  <Mail className="w-5 h-5" />
-                  Request Quote
-                </a>
+                  <ShoppingCart className="w-5 h-5" />
+                  Out of Stock
+                </button>
               )}
 
               <button
