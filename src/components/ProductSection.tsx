@@ -121,9 +121,36 @@ const ProductSection = () => {
     </div>
   );
 
+  const categoryLinks = [
+    { name: "All Products", path: "/products" },
+    { name: "Tower Speakers", path: "/products/tower-speakers" },
+    { name: "Home Theatre", path: "/products/home-theatre-systems" },
+    { name: "DTH Receivers", path: "/products/dth-receivers" },
+    { name: "Car Audio", path: "/products/car-stereo-systems" },
+    { name: "Power Strips", path: "/products/power-strips" },
+    { name: "Audio Parts", path: "/products/speakers" },
+    { name: "Amplifiers", path: "/products/audio-amplifiers" },
+    { name: "Hot Deals", path: "/products/hot-selling-products" },
+  ];
+
   return (
-    <section className="py-16 sm:py-20 bg-gradient-to-b from-background to-muted/20">
+    <section className="py-8 sm:py-12 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4">
+        {/* Category Navigation Bar */}
+        <div className="mb-8 bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-4 shadow-lg">
+          <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide">
+            {categoryLinks.map((category) => (
+              <button
+                key={category.path}
+                onClick={() => navigate(category.path)}
+                className="whitespace-nowrap px-4 py-2.5 text-sm font-semibold text-foreground/70 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-primary/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 flex-shrink-0"
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
