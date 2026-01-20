@@ -135,30 +135,30 @@ const ProductSection = () => {
   );
 
   return (
-    <section className="py-8 sm:py-12 bg-gray-50">
+    <section className="py-8 sm:py-12 lg:py-14 bg-gray-50">
       <div className="container mx-auto px-4">
-        {/* Category Navigation Bar */}
-        <div className="mb-8 bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide pb-1">
+        {/* Category Navigation Bar - Responsive Grid */}
+        <div className="mb-8 bg-white border border-gray-200 rounded-xl p-4 sm:p-5 shadow-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3">
             {categories.map((category) => (
               <Link
                 key={category.path}
                 to={category.path}
-                className="group whitespace-nowrap px-5 py-3 text-sm font-semibold text-gray-600 hover:text-white hover:bg-primary rounded-xl transition-all duration-200 flex-shrink-0 flex items-center gap-2"
+                className="group px-3 py-3 sm:px-4 sm:py-3 text-xs sm:text-sm font-semibold text-gray-600 hover:text-white hover:bg-primary rounded-lg transition-all duration-200 flex items-center justify-center gap-2 min-h-[48px] text-center"
               >
-                <category.icon className="w-4 h-4" />
-                {category.name}
+                <category.icon className="w-4 h-4 flex-shrink-0" />
+                <span className="truncate">{category.name}</span>
               </Link>
             ))}
             <Link
               to="/products?featured=true"
-              className="whitespace-nowrap px-5 py-3 text-sm font-semibold text-gray-600 hover:text-white hover:bg-primary rounded-xl transition-all duration-200 flex-shrink-0"
+              className="px-3 py-3 sm:px-4 sm:py-3 text-xs sm:text-sm font-semibold text-gray-600 hover:text-white hover:bg-primary rounded-lg transition-all duration-200 flex items-center justify-center gap-2 min-h-[48px]"
             >
               Featured
             </Link>
             <Link
               to="/products?trending=true"
-              className="whitespace-nowrap px-5 py-3 text-sm font-semibold text-gray-600 hover:text-white hover:bg-primary rounded-xl transition-all duration-200 flex-shrink-0"
+              className="px-3 py-3 sm:px-4 sm:py-3 text-xs sm:text-sm font-semibold text-gray-600 hover:text-white hover:bg-primary rounded-lg transition-all duration-200 flex items-center justify-center gap-2 min-h-[48px]"
             >
               Trending
             </Link>
@@ -166,10 +166,10 @@ const ProductSection = () => {
         </div>
 
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
           <div>
-            <h2 className="text-3xl font-bold text-foreground mb-2">All Products</h2>
-            <p className="text-muted-foreground">
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">All Products</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">
               {loading ? "Loading..." : `${filteredProducts.length} products available`}
             </p>
           </div>
@@ -177,7 +177,7 @@ const ProductSection = () => {
           {/* Mobile Filter Button */}
           <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" className="md:hidden">
+              <Button variant="outline" className="md:hidden w-full sm:w-auto min-h-[48px]">
                 <SlidersHorizontal className="w-4 h-4 mr-2" />
                 Filters
                 {activeFiltersCount > 0 && (
@@ -253,7 +253,7 @@ const ProductSection = () => {
                 </Button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 {filteredProducts.map((product, index) => (
                   <div
                     key={product.id}
