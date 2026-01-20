@@ -6,47 +6,47 @@
 
 @layer base {
   :root {
-    /* Premium Black Theme with Vibrant Blue Accent */
-    --background: 0 0% 4%;           /* Pure laser black #0A0A0A */
-    --foreground: 0 0% 98%;          /* Crisp white */
+    /* Clean Modern Light Theme with Professional Blue Accent */
+    --background: 0 0% 100%;         /* Pure white #FFFFFF */
+    --foreground: 222 47% 11%;       /* Dark gray text #1a202c */
 
-    --card: 0 0% 8%;                 /* Rich black card #141414 */
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 98%;                /* Light gray card #FAFAFA */
+    --card-foreground: 222 47% 11%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
     --primary: 211 100% 50%;         /* Vibrant electric blue #0080FF */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 15%;           /* Dark gray */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 210 40% 96%;        /* Light blue-gray #F1F5F9 */
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 0 0% 12%;               /* Darker muted */
-    --muted-foreground: 0 0% 60%;    /* Medium gray text */
+    --muted: 210 40% 96%;            /* Light muted background #F1F5F9 */
+    --muted-foreground: 215 16% 47%; /* Medium gray text #64748B */
 
     --accent: 211 100% 50%;          /* Electric blue accent */
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 91% 60%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 18%;              /* Subtle borders #2E2E2E */
-    --input: 0 0% 18%;
+    --border: 214 32% 91%;           /* Light borders #E2E8F0 */
+    --input: 214 32% 91%;
     --ring: 211 100% 50%;            /* Blue focus ring */
 
     --radius: 0.5rem;
 
-    --success: 142 76% 45%;
+    --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
 
-    --sidebar-background: 0 0% 8%;
-    --sidebar-foreground: 0 0% 98%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 222 47% 11%;
     --sidebar-primary: 211 100% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 18%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
     --sidebar-ring: 211 100% 50%;
   }
 }
@@ -59,7 +59,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.6;
     font-weight: 400;
     letter-spacing: -0.011em;

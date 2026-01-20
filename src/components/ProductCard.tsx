@@ -90,47 +90,47 @@ const ProductCard = ({
   return (
     <div 
       onClick={handleClick}
-      className="bg-gradient-to-br from-card to-card/50 rounded-2xl overflow-hidden border border-border/40 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group cursor-pointer backdrop-blur-sm"
+      className="bg-white rounded-2xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 group cursor-pointer"
     >
       {/* Image Container */}
-      <div className="relative bg-gradient-to-br from-background to-muted/20 p-6 aspect-square overflow-hidden">
+      <div className="relative bg-gray-50 p-6 aspect-square overflow-hidden">
         <LazyImage
           src={image}
           alt={name}
-          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out"
+          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 ease-out"
           wrapperClassName="w-full h-full"
         />
         
         {/* Discount Badge */}
         {discount > 0 && (
-          <div className="absolute top-4 left-4 bg-gradient-to-r from-destructive to-destructive/80 text-white font-bold px-3 py-1.5 rounded-lg shadow-lg backdrop-blur-sm animate-pulse">
+          <div className="absolute top-4 left-4 bg-red-500 text-white font-bold px-3 py-1.5 rounded-lg shadow-md">
             <span className="text-sm">-{discount}%</span>
           </div>
         )}
 
-        {/* Quick Actions - Modern glass morphism style */}
-        <div className="absolute top-4 right-4 flex flex-col gap-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {/* Quick Actions - Always visible on mobile, hover on desktop */}
+        <div className="absolute top-4 right-4 flex flex-col gap-2.5 sm:opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
           <button
             onClick={handleToggleWishlist}
-            className={`p-2.5 rounded-xl backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-125 active:scale-95 ${
+            className={`p-3 rounded-xl shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 ${
               liked 
-                ? "bg-gradient-to-br from-red-500 to-pink-500 text-white shadow-red-500/50" 
-                : "bg-white/95 text-gray-700 hover:bg-gradient-to-br hover:from-red-500 hover:to-pink-500 hover:text-white hover:shadow-red-500/50"
+                ? "bg-red-500 text-white" 
+                : "bg-white text-gray-700 hover:bg-red-50 border border-gray-200"
             }`}
             title={liked ? "Remove from wishlist" : "Add to wishlist"}
           >
-            <Heart className={`w-5 h-5 ${liked ? "fill-current" : ""}`} strokeWidth={2.5} />
+            <Heart className={`w-5 h-5 ${liked ? "fill-current" : ""}`} strokeWidth={2} />
           </button>
           <button
             onClick={handleToggleCompare}
-            className={`p-2.5 rounded-xl backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-125 active:scale-95 ${
+            className={`p-3 rounded-xl shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 ${
               inCompare
-                ? "bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-blue-500/50"
-                : "bg-white/95 text-gray-700 hover:bg-gradient-to-br hover:from-blue-500 hover:to-cyan-500 hover:text-white hover:shadow-blue-500/50"
+                ? "bg-primary text-white"
+                : "bg-white text-gray-700 hover:bg-blue-50 border border-gray-200"
             }`}
             title={inCompare ? "Remove from compare" : "Add to compare"}
           >
-            <GitCompare className="w-5 h-5" strokeWidth={2.5} />
+            <GitCompare className="w-5 h-5" strokeWidth={2} />
           </button>
         </div>
       </div>
@@ -185,13 +185,13 @@ const ProductCard = ({
           </div>
         </div>
 
-        {/* Actions - Modern gradient style */}
+        {/* Actions - Clean button style */}
         <div className="flex items-center gap-2 pt-3">
           <button 
             onClick={handleAddToCart}
-            className="flex-1 bg-gradient-to-r from-primary via-primary to-primary/90 hover:from-primary/90 hover:via-primary hover:to-primary text-primary-foreground font-semibold py-3 px-5 rounded-xl text-sm flex items-center justify-center gap-2.5 transition-all duration-300 hover:shadow-xl hover:shadow-primary/50 hover:scale-105 active:scale-95 group/btn"
+            className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-5 rounded-xl text-sm flex items-center justify-center gap-2.5 transition-all duration-300 hover:shadow-lg active:scale-98"
           >
-            <ShoppingCart className="w-5 h-5 group-hover/btn:animate-bounce" strokeWidth={2} />
+            <ShoppingCart className="w-5 h-5" strokeWidth={2} />
             Add to Cart
           </button>
         </div>

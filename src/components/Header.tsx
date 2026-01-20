@@ -69,7 +69,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border/60 backdrop-blur-xl bg-background/95 shadow-lg shadow-black/50">
+      <header className="sticky top-0 z-40 border-b border-border backdrop-blur-lg bg-white/95 shadow-sm">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between gap-6">
             {/* Logo */}
@@ -81,10 +81,10 @@ const Header = () => {
             <div className="flex-1 max-w-xl hidden md:block">
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="w-full bg-card border border-border/60 rounded-full py-2.5 px-5 text-left text-muted-foreground hover:bg-card/80 hover:border-primary/50 transition-all flex items-center justify-between group"
+                className="w-full bg-gray-50 border border-border rounded-full py-2.5 px-5 text-left text-muted-foreground hover:bg-gray-100 hover:border-primary/30 transition-all flex items-center justify-between group"
               >
                 <span className="text-sm">Search products...</span>
-                <Search className="w-4 h-4 text-muted-foreground group-hover:text-foreground/80 transition-colors" strokeWidth={1.5} />
+                <Search className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" strokeWidth={1.5} />
               </button>
             </div>
 
@@ -92,7 +92,7 @@ const Header = () => {
             <div className="flex items-center gap-1 sm:gap-2">
               {/* Search - Mobile */}
               <button 
-                className="md:hidden p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all"
+                className="md:hidden p-2 text-gray-600 hover:text-foreground hover:bg-gray-100 rounded-full transition-all"
                 onClick={() => setIsSearchOpen(true)}
                 aria-label="Search"
               >
@@ -102,10 +102,10 @@ const Header = () => {
               {/* User */}
               {user ? (
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all">
+                  <DropdownMenuTrigger className="p-2 text-gray-600 hover:text-foreground hover:bg-gray-100 rounded-full transition-all">
                     <User className="w-5 h-5" strokeWidth={1.5} />
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="bg-card border-border">
+                  <DropdownMenuContent align="end" className="bg-white border-border">
                     <DropdownMenuItem onClick={() => navigate("/profile")} className="cursor-pointer">
                       My Profile
                     </DropdownMenuItem>
@@ -134,7 +134,7 @@ const Header = () => {
               ) : (
                 <Link 
                   to="/auth" 
-                  className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all"
+                  className="p-2 text-gray-600 hover:text-foreground hover:bg-gray-100 rounded-full transition-all"
                   aria-label="Sign in"
                 >
                   <User className="w-5 h-5" strokeWidth={1.5} />
@@ -144,7 +144,7 @@ const Header = () => {
               {/* Wishlist */}
               <Link 
                 to="/wishlist" 
-                className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all relative"
+                className="p-2 text-gray-600 hover:text-foreground hover:bg-gray-100 rounded-full transition-all relative"
                 aria-label="Wishlist"
               >
                 <Heart className="w-5 h-5" strokeWidth={1.5} />
@@ -158,7 +158,7 @@ const Header = () => {
               {/* Compare */}
               <Link 
                 to="/compare" 
-                className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all relative"
+                className="p-2 text-gray-600 hover:text-foreground hover:bg-gray-100 rounded-full transition-all relative"
                 aria-label="Compare"
               >
                 <GitCompare className="w-5 h-5" strokeWidth={1.5} />
@@ -172,7 +172,7 @@ const Header = () => {
               {/* Cart */}
               <button 
                 onClick={() => setIsCartOpen(true)}
-                className="p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all relative"
+                className="p-2 text-gray-600 hover:text-foreground hover:bg-gray-100 rounded-full transition-all relative"
                 aria-label="Cart"
               >
                 <ShoppingCart className="w-5 h-5" strokeWidth={1.5} />
@@ -185,7 +185,7 @@ const Header = () => {
 
               {/* Mobile Menu */}
               <button 
-                className="md:hidden p-2 text-foreground/60 hover:text-foreground hover:bg-card/30 rounded-full transition-all"
+                className="md:hidden p-2 text-gray-600 hover:text-foreground hover:bg-gray-100 rounded-full transition-all"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Menu"
               >
@@ -199,7 +199,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-background/95 border-t border-border/30 backdrop-blur-sm">
+          <div className="md:hidden bg-white border-t border-border">
             <div className="container mx-auto px-4 py-3">
               {/* Categories Section */}
               <div className="mb-4">
@@ -209,7 +209,7 @@ const Header = () => {
                     <Link
                       key={category.slug}
                       to={`/products/${category.slug}`}
-                      className="flex items-center gap-3 py-2 px-3 text-foreground hover:bg-card/50 rounded-lg transition-colors"
+                      className="flex items-center gap-3 py-2 px-3 text-foreground hover:bg-gray-50 rounded-lg transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <category.icon className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
@@ -220,14 +220,14 @@ const Header = () => {
               </div>
 
               {/* Quick Links */}
-              <div className="border-t border-border/30 pt-3 space-y-1">
-                <Link to="/products" className="block py-2 px-3 text-foreground hover:bg-card/50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <div className="border-t border-border pt-3 space-y-1">
+                <Link to="/products" className="block py-2 px-3 text-foreground hover:bg-gray-50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
                   All Products
                 </Link>
-                <Link to="/products?featured=true" className="block py-2 px-3 text-foreground hover:bg-card/50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
+                <Link to="/products?featured=true" className="block py-2 px-3 text-foreground hover:bg-gray-50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
                   Featured
                 </Link>
-                <Link to="/products?trending=true" className="block py-2 px-3 text-foreground hover:bg-card/50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
+                <Link to="/products?trending=true" className="block py-2 px-3 text-foreground hover:bg-gray-50 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>
                   Trending
                 </Link>
               </div>

@@ -135,30 +135,30 @@ const ProductSection = () => {
   );
 
   return (
-    <section className="py-8 sm:py-12 bg-gradient-to-b from-background to-muted/20">
+    <section className="py-8 sm:py-12 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Category Navigation Bar */}
-        <div className="mb-8 bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-4 shadow-lg">
+        <div className="mb-8 bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
           <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide pb-1">
             {categories.map((category) => (
               <Link
                 key={category.path}
                 to={category.path}
-                className="group whitespace-nowrap px-5 py-3 text-sm font-semibold text-foreground/70 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-primary/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 flex-shrink-0 flex items-center gap-2"
+                className="group whitespace-nowrap px-5 py-3 text-sm font-semibold text-gray-600 hover:text-white hover:bg-primary rounded-xl transition-all duration-200 flex-shrink-0 flex items-center gap-2"
               >
-                <category.icon className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+                <category.icon className="w-4 h-4" />
                 {category.name}
               </Link>
             ))}
             <Link
               to="/products?featured=true"
-              className="whitespace-nowrap px-5 py-3 text-sm font-semibold text-foreground/70 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-primary/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 flex-shrink-0"
+              className="whitespace-nowrap px-5 py-3 text-sm font-semibold text-gray-600 hover:text-white hover:bg-primary rounded-xl transition-all duration-200 flex-shrink-0"
             >
               Featured
             </Link>
             <Link
               to="/products?trending=true"
-              className="whitespace-nowrap px-5 py-3 text-sm font-semibold text-foreground/70 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-primary/80 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 flex-shrink-0"
+              className="whitespace-nowrap px-5 py-3 text-sm font-semibold text-gray-600 hover:text-white hover:bg-primary rounded-xl transition-all duration-200 flex-shrink-0"
             >
               Trending
             </Link>
@@ -227,8 +227,8 @@ const ProductSection = () => {
         <div className="flex gap-6">
           {/* Desktop Filter Sidebar - Always visible */}
           <div className="hidden md:block w-64 flex-shrink-0">
-            <div className="bg-card rounded-lg shadow-lg p-6 sticky top-4">
-              <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 sticky top-4">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <SlidersHorizontal className="w-5 h-5" />
                 Filters
               </h3>

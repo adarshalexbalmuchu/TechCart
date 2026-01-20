@@ -72,7 +72,7 @@ INSERT INTO public.products (name, description, category, brand, price, original
 ('UT 012 IPL Car Stereo', 'IPL Eco Series - Advanced car audio system', 'car-stereo-systems', 'UNITECH', 6499.00, 7999.00, 19, 4.5, 76, 28, false, false, 'https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=400'),
 ('1340 Car Stereo', 'Premium car audio system', 'car-stereo-systems', 'UNITECH', 3999.00, 5499.00, 27, 4.0, 54, 35, false, false, 'https://images.unsplash.com/photo-1589003077984-894e133dabab?w=400'),
 ('3131 Car Stereo', 'High-quality car audio system', 'car-stereo-systems', 'UNITECH', 3499.00, 4999.00, 30, 4.0, 47, 38, false, false, 'https://images.unsplash.com/photo-1563330232-57114bb0823c?w=400'),
-('3410 Tractor USB', 'Tractor USB audio system - Heavy duty', 'car-stereo-systems', 'UNITECH', 2999.00, 4499.00, 33, 4.5, 62, 40, false, false, 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400');
+('3410 Tractor USB', 'Tractor USB audio system -   duty', 'car-stereo-systems', 'UNITECH', 2999.00, 4499.00, 33, 4.5, 62, 40, false, false, 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400');
 
 -- 6. Power Strips & Accessories (₹300 - ₹2,500)
 INSERT INTO public.products (name, description, category, brand, price, original_price, discount_percent, rating, reviews_count, stock, is_featured, is_trending, image_url) VALUES
