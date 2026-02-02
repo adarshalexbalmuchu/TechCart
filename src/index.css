@@ -106,12 +106,21 @@
   }
 }
 
-@l/* Respect user's motion preferences */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Respect user's motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-in,
     .animate-slide-up,
-    .animate-scale-in,
-    .animate-glow {
+    .animate-scale-in {
       animation: none !important;
       opacity: 1 !important;
       transform: none !important;
@@ -127,7 +136,21 @@
   .animate-fade-in {
     animation: fadeIn 0.4s ease-out forwards;
     opacity: 0;
-  }8px);
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -153,30 +176,6 @@
   }
   to {
     opacity: 1;
-    transform: scale(1
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 128, 255, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(0, 128, 255, 0.6);
   }
 }

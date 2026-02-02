@@ -103,8 +103,8 @@ const ProductCard = ({
         />
         
         {/* Discount Badge */}
-        {discount > 0 && ( aria-label={`${discount}% discount`}
-          <div className="absolute top-4 left-4 bg-red-500 text-white font-bold px-3 py-1.5 rounded-lg shadow-md">
+        {discount > 0 && (
+          <div className="absolute top-4 left-4 bg-red-500 text-white font-bold px-3 py-1.5 rounded-lg shadow-md" aria-label={`${discount}% discount`}>
             <span className="text-sm">-{discount}%</span>
           </div>
         )}
@@ -117,6 +117,7 @@ const ProductCard = ({
               liked 
                 ? "bg-red-500 text-white" 
                 : "bg-white text-gray-700 hover:bg-red-50 border border-gray-200"
+            }`}
             aria-label={liked ? `Remove ${name} from wishlist` : `Add ${name} to wishlist`}
             aria-pressed={liked}
           >
@@ -130,8 +131,7 @@ const ProductCard = ({
                 : "bg-white text-gray-700 hover:bg-blue-50 border border-gray-200"
             }`}
             aria-label={inCompare ? `Remove ${name} from compare` : `Add ${name} to compare`}
-            aria-pressed={inCompare
-            title={inCompare ? "Remove from compare" : "Add to compare"}
+            aria-pressed={inCompare}
           >
             <GitCompare className="w-5 h-5" strokeWidth={2} />
           </button>
@@ -198,9 +198,7 @@ const ProductCard = ({
           </button>
         </div>
       </div>
-    </article/div>
-      </div>
-    </div>
+    </article>
   );
 };
 
