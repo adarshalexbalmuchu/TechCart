@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <img src={`${import.meta.env.BASE_URL}new-logo.png`} alt="Unitech" className="h-11 w-auto" />
+              <img src={`${import.meta.env.BASE_URL}unitech-logo.png`} alt="Unitech - Expand Your Life" className="h-11 w-auto" />
             </div>
             <p className="text-sm text-gray-600 leading-relaxed mb-6">
               Manufacturing premium audio equipment and electronics since 1999. Trusted by professionals across India.

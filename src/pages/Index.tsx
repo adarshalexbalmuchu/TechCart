@@ -1,17 +1,17 @@
-import Header from "@/components/Header";
-import HeroBanner from "@/components/HeroBanner";
-import ProductSection from "@/components/ProductSection";
-import Footer from "@/components/Footer";
+import HeaderPremium from "@/components/HeaderPremium";
+import HeroPremium from "@/components/HeroPremium";
+import ProductSectionsPremium from "@/components/ProductSectionsPremium";
+import FooterPremium from "@/components/FooterPremium";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <HeaderPremium />
       <main>
-        <HeroBanner />
-        <ProductSection />
+        <HeroPremium />
+        <ProductSectionsPremium />
       </main>
-      <Footer />
+      <FooterPremium />
     </div>
   );
 };

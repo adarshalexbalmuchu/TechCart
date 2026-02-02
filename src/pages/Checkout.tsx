@@ -167,7 +167,7 @@ const Checkout = () => {
         currency: "INR",
         name: "TechCart",
         description: `Order #${order.id.substring(0, 8)}`,
-        image: "/new-logo.png",
+        image: "/unitech-logo.png",
         order_id: "", // Generate from backend if using Razorpay Orders API
         handler: async function (response: any) {
           try {

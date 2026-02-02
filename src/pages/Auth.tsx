@@ -113,14 +113,12 @@ const Auth = () => {
 
         <div className="bg-card rounded-2xl p-8 shadow-lg border border-border">
           {/* Logo */}
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="bg-primary rounded-lg p-2">
-              <span className="text-primary-foreground font-display font-bold text-xl">KE</span>
-            </div>
-            <div>
-              <h1 className="font-display font-bold text-xl text-foreground">KOHINOOR</h1>
-              <p className="text-xs text-secondary">Electronics Store</p>
-            </div>
+          <div className="flex items-center justify-center mb-6">
+            <img 
+              src={`${import.meta.env.BASE_URL}unitech-logo.png`} 
+              alt="Unitech - Expand Your Life" 
+              className="h-12 w-auto"
+            />
           </div>
 
           <h2 className="text-2xl font-display font-bold text-center text-foreground mb-2">
